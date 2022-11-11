@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  explorer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: python_snippets
+    volumes:
+      - ./snippets:/app/snippets
+      - ./poetry.lock:/app/poetry.lock
+      - ./pyproject.toml:/app/pyproject.toml
+      - ./README.md:/app/README.md
