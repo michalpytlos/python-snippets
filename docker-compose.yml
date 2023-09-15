@@ -1,11 +1,24 @@
 version: '3.8'
 services:
-  explorer:
+  snippets:
     build:
       context: ./snippets
       dockerfile: Dockerfile
-    container_name: python_snippets
+    container_name: snippets
     volumes:
       - ./snippets/snippets:/app/snippets
       - ./snippets/poetry.lock:/app/poetry.lock
       - ./snippets/pyproject.toml:/app/pyproject.toml
+  postgres:
+    image: postgres:15
+    container_name: snippets_postgres
+    environment:
+        - POSTGRES_USER=snippets
+        - POSTGRES_PASSWORD=snippets
+        - POSTGRES_DB=snippets
+    volumes:
+        - postgres-data:/var/lib/postgresql/data
+    ports:
+        - 5432:5432
+volumes:
+  postgres-data:
