@@ -24,7 +24,6 @@ RUN poetry install
 
 # Copy required project files
 COPY snippets snippets
-COPY README.md ./
 
 # Keep container alive
 ENTRYPOINT ["tail"]
