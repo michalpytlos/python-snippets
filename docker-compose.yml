@@ -9,6 +9,15 @@ services:
       - ./snippets/snippets:/app/snippets
       - ./snippets/poetry.lock:/app/poetry.lock
       - ./snippets/pyproject.toml:/app/pyproject.toml
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: snippets_server
+    volumes:
+      - ./server:/app
+    ports:
+        - 8000:8000
   postgres:
     image: postgres:15
     container_name: snippets_postgres
