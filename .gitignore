@@ -1,0 +1,9 @@
+# Compiled Python bytecode
+*.py[cod]
+
+# IDE
+.vscode
+.coverage
+
+# Configuration
+.env
