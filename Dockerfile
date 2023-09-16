@@ -1,7 +1,7 @@
 FROM python:3.11-slim AS python-snippets
 
 ARG PIPX_VERSION=1.0.0
-ARG POETRY_VERSION=1.1.12
+ARG POETRY_VERSION=1.6.1
 
 RUN apt update
 
@@ -24,7 +24,8 @@ RUN poetry install
 
 # Copy required project files
 COPY snippets snippets
+COPY server server
 
-# Keep container alive
-ENTRYPOINT ["tail"]
-CMD ["-f","/dev/null"]
+# Run server
+ENTRYPOINT ["uvicorn"]
+CMD ["server.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

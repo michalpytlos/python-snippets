@@ -1,11 +1,14 @@
 [tool.poetry]
-name = "snippets-server"
+name = "snippets"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
+rich = "^12.6.0"
+ipython = "^8.5.0"
+httpx = "^0.25.0"
 fastapi = "^0.103.1"
 uvicorn = {extras = ["standard"], version = "^0.23.2"}
 

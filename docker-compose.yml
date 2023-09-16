@@ -2,20 +2,13 @@ version: '3.8'
 services:
   snippets:
     build:
-      context: ./snippets
       dockerfile: Dockerfile
     container_name: snippets
     volumes:
-      - ./snippets/snippets:/app/snippets
-      - ./snippets/poetry.lock:/app/poetry.lock
-      - ./snippets/pyproject.toml:/app/pyproject.toml
-  server:
-    build:
-      context: ./server
-      dockerfile: Dockerfile
-    container_name: snippets_server
-    volumes:
-      - ./server:/app
+      - ./snippets:/app/snippets
+      - ./poetry.lock:/app/poetry.lock
+      - ./pyproject.toml:/app/pyproject.toml
+      - ./server:/app/server
     ports:
         - 8000:8000
   postgres:
